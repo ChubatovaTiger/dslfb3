@@ -33,6 +33,7 @@ vcsRoot(Repo3)
 
     buildType(Build1)
     buildType(Build3)
+buildType(Build4)
 }
 
 object Build1 : BuildType({
@@ -53,6 +54,26 @@ root(Repo3)
 
 object Build3 : BuildType({
     name = "build3"
+
+    vcs {
+        root(DslContext.settingsRoot)
+        root(HttpsGithubComChubatovaTigerChubatovaGradleTestsBackup)
+        root(Repo3, "+:. => repo3")
+    }
+    steps {
+        script {
+            scriptContent = "ls repo3"
+        }
+    }
+    dependencies {
+        snapshot(Build4) {
+            reuseBuilds = ReuseBuilds.NO
+        }
+    }
+})
+
+object Build4 : BuildType({
+    name = "build4"
 
     vcs {
         root(DslContext.settingsRoot)
