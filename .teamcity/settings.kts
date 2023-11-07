@@ -60,7 +60,6 @@ object Build3 : BuildType({
     }
     steps {
         script {
-            id = "simpleRunner"
             scriptContent = "ls"
         }
     }
