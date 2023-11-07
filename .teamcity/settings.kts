@@ -31,7 +31,7 @@ project {
 vcsRoot(Repo3)
 
     buildType(Build1)
-    buildType(Build2)
+    buildType(Build3)
 }
 
 object Build1 : BuildType({
@@ -57,6 +57,12 @@ object Build3 : BuildType({
         root(DslContext.settingsRoot)
         root(HttpsGithubComChubatovaTigerChubatovaGradleTestsBackup)
         root(Repo3)
+    }
+    steps {
+        script {
+            id = "simpleRunner"
+            scriptContent = "ls"
+        }
     }
 })
 
