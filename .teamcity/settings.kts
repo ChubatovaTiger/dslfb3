@@ -44,6 +44,11 @@ object Build1 : BuildType({
         root(HttpsGithubComChubatovaTigerChubatovaGradleTestsBackup)
 root(Repo3)
     }
+    steps {
+        script {
+            scriptContent = "sleep 60"
+        }
+    }
 
     dependencies {
         snapshot(Build3) {
