@@ -46,7 +46,7 @@ root(Repo3)
     }
     steps {
         script {
-            scriptContent = "sleep 60"
+            scriptContent = "sleep 6"
         }
     }
 
