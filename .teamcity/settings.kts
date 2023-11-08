@@ -102,6 +102,7 @@ object Repo3 : GitVcsRoot({
     name = "repo3"
     url = "git@github.com:ChubatovaTiger/repo3.git"
     branch = "refs/heads/main"
+branchSpec = "refs/heads/(*)"
     authMethod = uploadedKey {
         uploadedKey = "rsaopensshnew"
         passphrase = "credentialsJSON:20cd5178-8721-46c5-a81a-e798deba3d65"
