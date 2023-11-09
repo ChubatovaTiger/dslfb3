@@ -63,11 +63,12 @@ object Build3 : BuildType({
     vcs {
         root(DslContext.settingsRoot)
         root(HttpsGithubComChubatovaTigerChubatovaGradleTestsBackup)
-        root(Repo3, "+:. => repo3")
+        //root(Repo3, "+:. => repo3")
     }
     steps {
         script {
-            scriptContent = "ls repo3"
+            //scriptContent = "ls repo3"
+scriptContent = "echo %par1%"
         }
     }
 features {
