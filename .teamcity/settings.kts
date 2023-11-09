@@ -2,27 +2,7 @@ import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.matrix
 import jetbrains.buildServer.configs.kotlin.vcs.GitVcsRoot
-/*
-The settings script is an entry point for defining a TeamCity
-project hierarchy. The script should contain a single call to the
-project() function with a Project instance or an init function as
-an argument.
 
-VcsRoots, BuildTypes, Templates, and subprojects can be
-registered inside the project using the vcsRoot(), buildType(),
-template(), and subProject() methods respectively.
-
-To debug settings scripts in command-line, run the
-
-    mvnDebug org.jetbrains.teamcity:teamcity-configs-maven-plugin:generate
-
-command and attach your debugger to the port 8000.
-
-To debug in IntelliJ Idea, open the 'Maven Projects' tool window (View
--> Tool Windows -> Maven Projects), find the generate task node
-(Plugins -> teamcity-configs -> teamcity-configs:generate), the
-'Debug' option is available in the context menu for the task.
-*/
 
 version = "2023.05"
 
@@ -32,8 +12,7 @@ project {
 vcsRoot(Repo3)
 
     buildType(Build1)
-    buildType(Build3)
-buildType(Build4)
+
 }
 
 object Build1 : BuildType({
@@ -49,28 +28,6 @@ root(Repo3)
             scriptContent = "sleep 6"
         }
     }
-
-    dependencies {
-        snapshot(Build3) {
-            reuseBuilds = ReuseBuilds.NO
-        }
-    }
-})
-
-object Build3 : BuildType({
-    name = "build3"
-
-    vcs {
-        root(DslContext.settingsRoot)
-        root(HttpsGithubComChubatovaTigerChubatovaGradleTestsBackup)
-        //root(Repo3, "+:. => repo3")
-    }
-    steps {
-        script {
-            //scriptContent = "ls repo3"
-scriptContent = "echo %par1%"
-        }
-    }
 features {
     matrix {
         param("par1", listOf(
@@ -79,27 +36,11 @@ features {
         ))
     }
 }
-    dependencies {
-        snapshot(Build4) {
-            reuseBuilds = ReuseBuilds.NO
-        }
-    }
+
+
 })
 
-object Build4 : BuildType({
-    name = "build4"
 
-    vcs {
-        root(DslContext.settingsRoot)
-        root(HttpsGithubComChubatovaTigerChubatovaGradleTestsBackup)
-        root(Repo3, "+:. => repo3")
-    }
-    steps {
-        script {
-            scriptContent = "ls repo3"
-        }
-    }
-})
 
 object HttpsGithubComChubatovaTigerChubatovaGradleTestsBackup : GitVcsRoot({
     name = "https://github.com/ChubatovaTiger/ChubatovaGradleTestsBackup"
