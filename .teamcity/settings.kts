@@ -70,6 +70,14 @@ object Build3 : BuildType({
             scriptContent = "ls repo3"
         }
     }
+features {
+    matrix {
+        param("par1", listOf(
+            value("12"),
+            value("13")
+        ))
+    }
+}
     dependencies {
         snapshot(Build4) {
             reuseBuilds = ReuseBuilds.NO
