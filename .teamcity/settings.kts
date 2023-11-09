@@ -30,6 +30,7 @@ root(Repo3, "+:. => repo3")
     }
 features {
     matrix {
+        enabled = false
         param("par1", listOf(
             value("12"),
             value("13")
