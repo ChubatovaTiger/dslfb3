@@ -25,7 +25,7 @@ root(Repo3)
     }
     steps {
         script {
-            scriptContent = "sleep 6"
+            scriptContent = "ls repo3"
         }
     }
 features {
